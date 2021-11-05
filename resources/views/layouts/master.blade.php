@@ -18,11 +18,12 @@
   <!-- End plugin css for this page -->
   <!-- inject:css -->
   <link rel="stylesheet" href="{{ asset('tema/skydash/css/vertical-layout-light/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('tema/skydash/vendors/jstree/dist/themes/default/style.min.css') }}">
   <!-- endinject -->
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
   <link rel="shortcut icon" href="http://sys.xptlp.co.id/favicon.ico" />
   @yield('css')
 </head>
+
 <body>
   <div class="container-scroller">
     <!-- partial:partials/_navbar.html -->
@@ -33,7 +34,7 @@
       @include('layouts._settings-panel')
       <!-- partial -->
       <!-- partial:partials/_sidebar.html -->
-       @include('layouts._sidebar')
+      @include('layouts._sidebar')
       <!-- partial -->
       <div class="main-panel">
         @yield('content')
@@ -41,17 +42,17 @@
         <!-- partial:partials/_footer.html -->
         <footer class="footer">
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021.  Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2021. Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash. All rights reserved.</span>
             <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="ti-heart text-danger ml-1"></i></span>
           </div>
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
-            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span> 
+            <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Distributed by <a href="https://www.themewagon.com/" target="_blank">Themewagon</a></span>
           </div>
-        </footer> 
+        </footer>
         <!-- partial -->
       </div>
       <!-- main-panel ends -->
-    </div>   
+    </div>
     <!-- page-body-wrapper ends -->
   </div>
   <!-- container-scroller -->
@@ -78,8 +79,34 @@
   <script src="{{ asset('tema/skydash/js/Chart.roundedBarCharts.js') }}"></script>
   <!-- End custom js for this page-->
   <script src="{{ asset('tema/skydash/vendors/sweetalert/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('tema/skydash/vendors/jstree/dist/jstree.min.js') }}"></script>
+  <script>
+    $(function() {
+          // 6 create an instance when the DOM is ready
+          $('#jstree').jstree({
+              "core": {
+                "themes": {
+                  "variant": "large"
+                }
+              }
+            });
+            // 7 bind to events triggered on the tree
+            $('#jstree').on("changed.jstree", function(e, data) {
+              console.log(data.selected);
+            });
+            // 8 interact with the tree - either way is OK
+            $('button').on('click', function() {
+              $('#jstree').jstree(true).select_node('child_node_1');
+              $('#jstree').jstree('select_node', 'child_node_1');
+              $.jstree.reference('#jstree').select_node('child_node_1');
+            });
+          });
+
+        function hreff(urll) {
+          window.location.href = urll;
+        }
+  </script>
   @yield('js')
 </body>
 
 </html>
-

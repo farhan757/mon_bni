@@ -8,7 +8,7 @@
                 <h4 class="card-title"><span class="mdi mdi-account-card-details"></span> Table User</h4>
                 <p class="card-description">
                 <div class="input-group">
-                    <button type="button" class="btn btn-inverse-success btn-fw"><span class="ti-plus" id="adddata"> </span> Add User</button>
+                    <button type="button" class="btn btn-inverse-success btn-fw" onclick="showform()"><span class="ti-plus" id="adddata"> </span> Add User</button>
                 </div>
                 </p>
                 <div class="table-responsive">
@@ -63,6 +63,10 @@
         ],
         "iDisplayLength": 10,
     });
+
+    function showform(){
+        window.location.href = "{{ route('user.form') }}";
+    }
 
     function DeleteUser(id) {
         swal({

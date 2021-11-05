@@ -20,6 +20,11 @@ class UserController extends Controller
         return view('master.user.index')->with('data',$data);
     }
 
+    public function form()
+    {
+        return view('master.user.form');
+    }
+
     public function add(Request $r)
     {
         $username = $r->username;

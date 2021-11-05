@@ -24,7 +24,10 @@ Route::middleware(['auth:web'])->group(function(){
     });
 
     Route::group(['prefix' => 'master'], function(){
+        
         Route::get('/user', [App\Http\Controllers\Master\UserController::class, 'index'])->name('user');
+        Route::get('/user/form', [App\Http\Controllers\Master\UserController::class, 'form'])->name('user.form');
+
         Route::get('/group', [App\Http\Controllers\Master\GroupController::class, 'index'])->name('group');
         Route::get('/project', [App\Http\Controllers\Master\ProjectController::class, 'index'])->name('project');
         Route::get('/material', [App\Http\Controllers\Master\MaterialController::class, 'index'])->name('material');
